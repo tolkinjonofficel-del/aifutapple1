@@ -1,254 +1,1070 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <title>Apple of Fortune – Signal olish</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-      background: url('https://i.ytimg.com/vi/ZpS6FZgZi68/maxresdefault.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      font-size: 24px;
-      border-radius: 0 0 10px 10px;
-      font-weight: bold;
-    }
-
-    .highlight {
-      color: #00ff99;
-      font-weight: bold;
-    }
-
-    .signal-section {
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.5);
-      margin: 20px auto;
-      border-radius: 12px;
-      max-width: 700px;
-    }
-
-    .signal-btn, .guide-btn, .send-btn, .register-btn {
-      padding: 12px 30px;
-      margin: 10px 10px 10px 10px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-
-    .signal-btn {
-      background: #00cc66;
-      color: white;
-    }
-
-    .guide-btn {
-      background: #ffaa00;
-      color: white;
-    }
-
-    .send-btn {
-      background: #ff4444;
-      color: white;
-    }
-
-    .register-btn {
-      background: #0066ff;
-      color: white;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 18px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-
-    .signal-btn:hover { background: #00e673; }
-    .guide-btn:hover { background: #ffbb33; }
-    .send-btn:hover { background: #ff6666; }
-    .register-btn:hover { background: #3399ff; }
-
-    .game-container, .guide-container {
-      display: none;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 600px;
-      margin: 30px auto;
-    }
-
-    .apple {
-      font-size: 60px;
-      animation: bounce 1.2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    input {
-      padding: 10px;
-      width: 80%;
-      font-size: 16px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-    }
-
-    .result-message {
-      display: none;
-      margin-top: 20px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .footer-buttons {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      z-index: 5;
-    }
-
-    .footer-buttons a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 10px;
-      background: #222;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 12px;
-      width: 60px;
-      transition: 0.3s;
-    }
-
-    .footer-buttons a:hover {
-      background: #ff4444;
-    }
-
-    .footer-buttons img {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple of Fortune Signal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .header:hover::before {
+            left: 100%;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #ff6b6b;
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .header h1 i {
+            color: #4ecdc4;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .header p {
+            color: #a5b1c2;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease 0.2s both;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #ffd8d8;
+            font-size: 0.95rem;
+        }
+        
+        .input-container {
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .input-error {
+            border-color: #ff5757 !important;
+            box-shadow: 0 0 0 3px rgba(255, 87, 87, 0.3) !important;
+        }
+        
+        .error-message {
+            color: #ff5757;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .input-success {
+            border-color: #4ecdc4 !important;
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.3) !important;
+        }
+        
+        .success-message {
+            color: #4ecdc4;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn:disabled:hover::before {
+            left: -100%;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc 0%, #00a8ff 100%);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+        }
+        
+        .btn-telegram:hover {
+            background: linear-gradient(135deg, #0077b3 0%, #0097e6 100%);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.6);
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .apples-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0;
+            flex-wrap: nowrap;
+            padding: 0 5px;
+            animation: bounceIn 0.8s ease;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .apple {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            animation: appleGlow 3s infinite alternate;
+        }
+        
+        @keyframes appleGlow {
+            0% { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); }
+            100% { box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6); }
+        }
+        
+        .apple:hover {
+            transform: scale(1.1);
+        }
+        
+        .apple.whole {
+            background-image: url('https://play-lh.googleusercontent.com/ry2IEX3NDeH5UE3PKMmxBXfwDTs3c2THKlHlUir6u69oVgpAP5QINwuV2HIE-HgBXW0');
+            background-color: #ff6b6b;
+        }
+        
+        .apple.bitten {
+            background-image: url('https://i.ibb.co/Vc9x7sZz/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
+            background-color: #c44569;
+        }
+        
+        .game-info {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #a5b1c2;
+            font-size: 0.95rem;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .level-indicator {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 107, 107, 0.3);
+            border-radius: 20px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+        
+        .message {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .invite-section {
+            text-align: center;
+            margin-top: 25px;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .invite-message {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+            max-width: 300px;
+            font-size: 0.9rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .loading-content {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .loading-spinner {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+        
+        .loading-subtext {
+            font-size: 1rem;
+            color: #a5b1c2;
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .loading-subtext::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+        
+        .telegram-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 15px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .telegram-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: scaleIn 0.3s ease;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .telegram-modal h3 {
+            margin-bottom: 15px;
+            color: #0088cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .telegram-modal p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .contact-list {
+            max-height: 250px;
+            overflow-y: auto;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .contact-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: #f5f5f5;
+        }
+        
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0088cc;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .contact-name {
+            font-weight: 600;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn-primary {
+            background: #0088cc;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+        }
+        
+        .modal-btn-primary:hover {
+            background: #0077b3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.6);
+        }
+        
+        .modal-btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .modal-btn-secondary:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+        }
+        
+        .promo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-left: 5px;
+            animation: pulse 2s infinite;
+        }
+        
+        .signal-info {
+            background: rgba(78, 205, 196, 0.25);
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .apple-stem {
+            position: absolute;
+            top: -5px;
+            width: 3px;
+            height: 10px;
+            background: #8B4513;
+            border-radius: 2px;
+        }
+        
+        .apple-leaf {
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            width: 10px;
+            height: 6px;
+            background: #228B22;
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg);
+        }
+    </style>
 </head>
 <body>
-
-  <header>🍏 Apple of Fortune – <span class="highlight">Signal olish</span></header>
-
-  <section class="signal-section">
-    <h2>
-      🎯 <span class="highlight">AIFUT promokodi</span> orqali ro'yhatdan o'ting<br />
-      💰 <span class="highlight">100$ gacha bonus</span> va <span class="highlight">daromad olish</span>ni boshlang!
-    </h2>
-    <button class="signal-btn" onclick="showGame()">📡 Signal olish</button>
-    <button class="guide-btn" onclick="showGuide()">📘 Qo‘llanma</button>
-  </section>
-
-  <div class="game-container" id="game">
-    <div class="apple">🍎</div>
-    <h3>📥 AIFUT promokodi orqali ro'yhatga olingan akkaunt malumotlarini kiriting:</h3>
-    <input type="text" id="userId" placeholder="🎫 ID raqamingizni kiriting" />
-    <br />
-    <input type="tel" id="userPhone" placeholder="📱 Telefon raqamingizni kiriting" />
-    <br />
-    <button class="send-btn" onclick="sendData()">👉SIGNAL OLISH👈</button>
-
-    <div class="result-message" id="resultMessage">
-      Sizning ma’lumotlaringiz <span class="highlight">tahlil qilinmoqda...</span><br /><br />
-      Agar siz <span class="highlight">to‘liq ro‘yxatdan o‘tgan</span>, <span class="highlight">promokodni to‘g‘ri</span> kiritgan va kamida <span class="highlight">$15 depozit</span> qilgan bo‘lsangiz — <span class="highlight">bot 24 soat ichida aktivlashadi!</span>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-apple-alt"></i> Apple of Fortune <span class="promo-badge">AIFUT</span></h1>
+            <p>Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan MegaPari foydalanuvchilari uchun</p>
+        </div>
+        
+        <!-- Kirish qismi -->
+        <div id="login-section" class="card">
+            <div class="form-group">
+                <label for="id-number"><i class="fas fa-id-card"></i> ID Raqam</label>
+                <div class="input-container">
+                    <input type="text" id="id-number" placeholder="AIFUT promokod orqali olingan ID" maxlength="20">
+                    <div class="error-message" id="id-error">ID raqam kiriting</div>
+                    <div class="success-message" id="id-success">ID raqam to'g'ri kiritildi</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone-number"><i class="fas fa-phone"></i> Telefon Raqam</label>
+                <div class="input-container">
+                    <input type="tel" id="phone-number" placeholder="Megapari ga ro'yxatdan o'tgan raqam" maxlength="15">
+                    <div class="error-message" id="phone-error">Telefon raqamni togri kiriting</div>
+                    <div class="success-message" id="phone-success">Telefon raqam to'g'ri kiritildi</div>
+                </div>
+            </div>
+            <button id="login-btn" class="btn" disabled>Ma'lumotlarni Tasdiqlash</button>
+        </div>
+        
+        <!-- Signal olish qismi -->
+        <div id="signal-section" class="card hidden">
+            <div class="signal-info">
+                <i class="fas fa-info-circle"></i> Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan MegaPari foydalanuvchilari uchun aniq ishlaydi
+            </div>
+            <button id="signal-btn" class="btn">Signal Olish</button>
+        </div>
+        
+        <!-- O'yin qismi -->
+        <div id="game-section" class="card hidden">
+            <div class="game-info">
+                <div class="level-indicator">signal for fortune <span id="level">🛰</span></div>
+            </div>
+            
+            <h2 style="text-align: center; margin-bottom: 15px; font-size: 1.3rem;">Apple of Fortune</h2>
+            
+            <div id="apples-container" class="apples-container">
+                <!-- Olmalar JavaScript orqali yaratiladi -->
+            </div>
+            
+            <button id="next-row-btn" class="btn">Keyingi Qator</button>
+        </div>
+        
+        <!-- Taklif qilish qismi -->
+        <div id="invite-section" class="card hidden">
+            <div class="message">
+                <h3><i class="fas fa-users"></i> signal olishni Davom Ettirish</h3>
+                <p>Signal olishni davom ettirish uchun 15 ta do'stingizga tarqating</p>
+            </div>
+            
+            <div class="progress-container">
+                <p>Taklif qilingan do'stlar: <span id="invited-count">0</span>/15</p>
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+            </div>
+            
+            <div class="invite-section">
+                <button id="share-btn" class="btn btn-telegram">
+                    <i class="fab fa-telegram"></i> Do'stlarga Tarqatish
+                </button>
+                
+                <button id="continue-btn" class="btn hidden" style="margin-top: 15px;">Davom Etish</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="guide-container" id="guideBox">
-    <h2>📘 Ro‘yxatdan o‘tish bo‘yicha qo‘llanma</h2>
-    <img src="https://ibb.co/JRMyssGK" width="90%" alt="Rasm 1" />
-    <p>1. Promokod <span class="highlight">AIFUT</span> bilan ro‘yxatdan o‘ting.</p>
+    <!-- Yuklanish ekrani -->
+    <div id="loading-screen" class="loading-screen hidden">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="loading-text">Signal qidirilmoqda</div>
+            <div class="loading-subtext"></div>
+        </div>
+    </div>
 
-    <img src="https://via.placeholder.com/600x300?text=Rasm+2" width="90%" alt="Rasm 2" />
-    <p>2. Telefon raqamingizni va boshqa ma’lumotlarni kiriting.</p>
+    <!-- Telegram modal oynasi -->
+    <div id="telegram-modal" class="telegram-modal hidden">
+        <div class="telegram-modal-content">
+            <h3><i class="fab fa-telegram"></i> Telegram orqali tarqatish</h3>
+            <p>Quyidagi kontaktlaringizga taklif xabarini yuboring:</p>
+            
+            <div class="contact-list" id="contact-list">
+                <!-- Kontaktlar JavaScript orqali yaratiladi -->
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="send-all-btn" class="modal-btn modal-btn-primary">Barchasiga Yuborish</button>
+                <button id="cancel-telegram-btn" class="modal-btn modal-btn-secondary">Bekor Qilish</button>
+            </div>
+        </div>
+    </div>
 
-    <img src="https://via.placeholder.com/600x300?text=Rasm+3" width="90%" alt="Rasm 3" />
-    <p>3. Kamida <span class="highlight">$15</span> depozit kiritish kerak.</p>
+    <div id="notification" class="notification"></div>
 
-    <a class="register-btn" href="https://t.me/aifutbot" target="_blank">🚀 Ro‘yxatdan o‘tish</a>
-  </div>
-
-  <div class="footer-buttons">
-    <a href="#">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home" />
-      Bosh
-    </a>
-    <a href="#">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Search" />
-      Qidiruv
-    </a>
-    <a href="#">
-      <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" alt="Stats" />
-      Stat
-    </a>
-    <a href="#">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747545.png" alt="Profile" />
-      Profil
-    </a>
-    <a href="#">
-      <img src="https://cdn-icons-png.flaticon.com/512/709/709496.png" alt="Settings" />
-      Sozlamalar
-    </a>
-  </div>
-
-  <script>
-    function showGame() {
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('guideBox').style.display = 'none';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function showGuide() {
-      document.getElementById('guideBox').style.display = 'block';
-      document.getElementById('game').style.display = 'none';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function sendData() {
-      const userId = document.getElementById('userId').value.trim();
-      const userPhone = document.getElementById('userPhone').value.trim();
-      const resultMessage = document.getElementById('resultMessage');
-
-      if (!userId) {
-        alert('ID raqamingizni kiriting!');
-        return;
-      }
-      if (!userPhone) {
-        alert('Telefon raqamingizni kiriting!');
-        return;
-      }
-
-      // Bu yerda haqiqiy serverga yuborish bo‘lishi mumkin, ammo hozir shunchaki xabar ko‘rsatamiz
-      resultMessage.style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script>
-
+    <script>
+        // DOM elementlari
+        const loginSection = document.getElementById('login-section');
+        const signalSection = document.getElementById('signal-section');
+        const gameSection = document.getElementById('game-section');
+        const inviteSection = document.getElementById('invite-section');
+        const loadingScreen = document.getElementById('loading-screen');
+        const telegramModal = document.getElementById('telegram-modal');
+        const contactList = document.getElementById('contact-list');
+        
+        const loginBtn = document.getElementById('login-btn');
+        const signalBtn = document.getElementById('signal-btn');
+        const nextRowBtn = document.getElementById('next-row-btn');
+        const continueBtn = document.getElementById('continue-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const sendAllBtn = document.getElementById('send-all-btn');
+        const cancelTelegramBtn = document.getElementById('cancel-telegram-btn');
+        
+        const idInput = document.getElementById('id-number');
+        const phoneInput = document.getElementById('phone-number');
+        const idError = document.getElementById('id-error');
+        const idSuccess = document.getElementById('id-success');
+        const phoneError = document.getElementById('phone-error');
+        const phoneSuccess = document.getElementById('phone-success');
+        
+        const applesContainer = document.getElementById('apples-container');
+        const invitedCount = document.getElementById('invited-count');
+        const progress = document.getElementById('progress');
+        const notification = document.getElementById('notification');
+        const levelElement = document.getElementById('level');
+        
+        // O'yin holatlari
+        let currentRow = 1;
+        let invitedFriends = 0;
+        let gameLevel = 1;
+        let isIdValid = false;
+        let isPhoneValid = false;
+        
+        // ID raqam validatsiyasi
+        idInput.addEventListener('input', function() {
+            const idValue = this.value.replace(/\D/g, ''); // Faqat raqamlarni qoldiradi
+            this.value = idValue;
+            
+            if (idValue.length < 8) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+                idError.style.display = 'block';
+                idSuccess.style.display = 'none';
+                isIdValid = false;
+            } else {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+                idError.style.display = 'none';
+                idSuccess.style.display = 'block';
+                isIdValid = true;
+            }
+            updateLoginButton();
+        });
+        
+        // Telefon raqam validatsiyasi
+        phoneInput.addEventListener('input', function() {
+            const phoneValue = this.value.replace(/\D/g, ''); // Faqat raqamlarni qoldiradi
+            this.value = phoneValue;
+            
+            if (phoneValue.length < 9) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+                phoneError.style.display = 'block';
+                phoneSuccess.style.display = 'none';
+                isPhoneValid = false;
+            } else {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+                phoneError.style.display = 'none';
+                phoneSuccess.style.display = 'block';
+                isPhoneValid = true;
+            }
+            updateLoginButton();
+        });
+        
+        // Login tugmasini yangilash
+        function updateLoginButton() {
+            if (isIdValid && isPhoneValid) {
+                loginBtn.disabled = false;
+            } else {
+                loginBtn.disabled = true;
+            }
+        }
+        
+        // Tasdiqlash tugmasi bosilganda
+        loginBtn.addEventListener('click', function() {
+            if (isIdValid && isPhoneValid) {
+                showNotification("Ma'lumotlar tasdiqlandi! Endi signal olish tugmasini bosing.");
+                setTimeout(() => {
+                    loginSection.classList.add('hidden');
+                    signalSection.classList.remove('hidden');
+                }, 1000);
+            } else {
+                showNotification("Iltimos, ID va telefon raqamingizni to'g'ri kiriting!", true);
+            }
+        });
+        
+        // Signal olish tugmasi bosilganda
+        signalBtn.addEventListener('click', function() {
+            showNotification("Signal olish boshlandi! Apple of Fortune o'yiniga kirishingiz mumkin.");
+            setTimeout(() => {
+                signalSection.classList.add('hidden');
+                gameSection.classList.remove('hidden');
+                startGame();
+            }, 1500);
+        });
+        
+        // Keyingi qator tugmasi bosilganda
+        nextRowBtn.addEventListener('click', function() {
+            // Yuklanish ekranini ko'rsatish
+            showLoadingScreen();
+            
+            // 4 soniyalik kutish
+            setTimeout(() => {
+                // Yuklanish ekranini yashirish
+                loadingScreen.classList.add('hidden');
+                
+                // Keyingi qatorga o'tish
+                currentRow++;
+                
+                if (currentRow === 2) {
+                    generateApples(5, 2); // 5 ta olma, 2 tasi tishlangan
+                } else if (currentRow === 3) {
+                    generateApples(5, 3); // 5 ta olma, 3 tasi tishlangan
+                } else if (currentRow === 4) {
+                    generateApples(5, 3); // 5 ta olma, 3 tasi tishlangan
+                    nextRowBtn.textContent = "Signal olishni davom etish";
+                } else if (currentRow > 4) {
+                    // O'yin tugadi, taklif qilish kerak
+                    showNotification("O'yin tugadi! Davom etish uchun do'stlaringizga tarqating.");
+                    setTimeout(() => {
+                        gameSection.classList.add('hidden');
+                        inviteSection.classList.remove('hidden');
+                        updateInviteProgress();
+                    }, 1000);
+                }
+            }, 4000);
+        });
+        
+        // Do'stlarga tarqatish tugmasi
+        shareBtn.addEventListener('click', function() {
+            showTelegramModal();
+        });
+        
+        // Davom etish tugmasi bosilganda
+        continueBtn.addEventListener('click', function() {
+            inviteSection.classList.add('hidden');
+            gameSection.classList.remove('hidden');
+            
+            // Yangi o'yin bosqichi
+            gameLevel++;
+            levelElement.textContent = gameLevel;
+            currentRow = 1;
+            nextRowBtn.textContent = "Keyingi Qator";
+            
+            if (gameLevel === 2) {
+                generateApples(5, 1); // 5 ta olma, 1 tasi tishlangan
+            } else if (gameLevel > 2) {
+                // Ko'proq qatorlar
+                generateApples(5, 2); // 5 ta olma, 2 tasi tishlangan
+            }
+            
+            showNotification("Yangi bosqich boshlandi! Omad!");
+        });
+        
+        // Barcha kontaktlarga yuborish tugmasi
+        sendAllBtn.addEventListener('click', function() {
+            sendTelegramInvites();
+        });
+        
+        // Telegram modalini yopish
+        cancelTelegramBtn.addEventListener('click', function() {
+            telegramModal.classList.add('hidden');
+        });
+        
+        // Yuklanish ekranini ko'rsatish
+        function showLoadingScreen() {
+            loadingScreen.classList.remove('hidden');
+        }
+        
+        // Signal olishni boshlash
+        function startGame() {
+            gameLevel = 1;
+            currentRow = 1;
+            levelElement.textContent = gameLevel;
+            generateApples(5, 1); // 5 ta olma, 1 tasi tishlangan
+        }
+        
+        // Olmalarni yaratish funksiyasi
+        function generateApples(totalApples, bittenApples) {
+            applesContainer.innerHTML = '';
+            
+            // Tasodifiy tishlangan olmalar indekslari
+            const bittenIndices = [];
+            while (bittenIndices.length < bittenApples) {
+                const randomIndex = Math.floor(Math.random() * totalApples);
+                if (!bittenIndices.includes(randomIndex)) {
+                    bittenIndices.push(randomIndex);
+                }
+            }
+            
+            // Olmalarni yaratish
+            for (let i = 0; i < totalApples; i++) {
+                const apple = document.createElement('div');
+                apple.className = 'apple';
+                
+                if (bittenIndices.includes(i)) {
+                    apple.classList.add('bitten');
+                } else {
+                    apple.classList.add('whole');
+                    // Butun olmalarga poya va barg qo'shish
+                    const stem = document.createElement('div');
+                    stem.className = 'apple-stem';
+                    apple.appendChild(stem);
+                    
+                    const leaf = document.createElement('div');
+                    leaf.className = 'apple-leaf';
+                    apple.appendChild(leaf);
+                }
+                
+                applesContainer.appendChild(apple);
+            }
+        }
+        
+        // Taklif progressini yangilash
+        function updateInviteProgress() {
+            invitedCount.textContent = invitedFriends;
+            progress.style.width = `${(invitedFriends / 15) * 100}%`;
+            
+            if (invitedFriends >= 15) {
+                continueBtn.classList.remove('hidden');
+            } else {
+                continueBtn.classList.add('hidden');
+            }
+        }
+        
+        // Telegram modalini ko'rsatish
+        function showTelegramModal() {
+            // Kontaktlarni yaratish (simulyatsiya)
+            contactList.innerHTML = '';
+            const contacts = [
+                { name: "Ali Valiyev", id: "user1" },
+                { name: "Sardor Qodirov", id: "user2" },
+                { name: "Dilshod Rahimov", id: "user3" },
+                { name: "Otabek Karimov", id: "user4" },
+                { name: "Javohir Sobirov", id: "user5" },
+                { name: "Shaxzod Ismoilov", id: "user6" }
+            ];
+            
+            contacts.forEach(contact => {
+                const contactItem = document.createElement('div');
+                contactItem.className = 'contact-item';
+                contactItem.innerHTML = `
+                    <div class="contact-avatar">${contact.name.charAt(0)}</div>
+                    <div class="contact-name">${contact.name}</div>
+                `;
+                contactItem.addEventListener('click', function() {
+                    sendTelegramInvite(contact);
+                });
+                contactList.appendChild(contactItem);
+            });
+            
+            telegramModal.classList.remove('hidden');
+        }
+        
+        // Telegram orqali bitta kontaktga taklif yuborish
+        function sendTelegramInvite(contact) {
+            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Apple of Fortune ga aniq signal beradi`;
+            
+            // Telegram URL yaratish
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/aifutbot')}&text=${encodeURIComponent(inviteMessage)}`;
+            
+            // Yangi oyna ochish
+            window.open(telegramUrl, '_blank', 'width=600,height=400');
+            
+            showNotification(`Xabar ${contact.name} ga yuborildi!`);
+            invitedFriends++;
+            updateInviteProgress();
+        }
+        
+        // Telegram orqali barcha kontaktlarga taklif yuborish
+        function sendTelegramInvites() {
+            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Apple of Fortune ga aniq signal beradi`;
+            
+            // Telegram URL yaratish
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/aifutbot')}&text=${encodeURIComponent(inviteMessage)}`;
+            
+            // Yangi oyna ochish
+            window.open(telegramUrl, '_blank', 'width=600,height=400');
+            
+            showNotification("Xabar barcha kontaktlaringizga yuborildi!");
+            invitedFriends += 3; // Bir nechta kontaktga yuborilgani uchun
+            updateInviteProgress();
+            telegramModal.classList.add('hidden');
+        }
+        
+        // Xabarlarni ko'rsatish funksiyasi
+        function showNotification(message, isError = false) {
+            notification.textContent = message;
+            notification.style.background = isError 
+                ? 'rgba(255, 87, 87, 0.9)' 
+                : 'rgba(255, 255, 255, 0.95)';
+            notification.style.color = isError ? 'white' : '#333';
+            notification.style.borderLeftColor = isError ? '#ff5757' : '#4ecdc4';
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
