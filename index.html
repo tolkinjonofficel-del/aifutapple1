@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple of Fortune Signal</title>
+    <title>Signal O'yinlari</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -105,6 +105,16 @@
             color: #a5b1c2;
             font-size: 0.9rem;
             line-height: 1.4;
+        }
+        
+        .promo-message {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #ffd8d8;
         }
         
         .card {
@@ -273,6 +283,7 @@
             display: none !important;
         }
         
+        /* Apple o'yini uslublari */
         .apples-container {
             display: flex;
             justify-content: center;
@@ -322,7 +333,7 @@
         }
         
         .apple.bitten {
-            background-image: url('https://i.ibb.co/Vc9x7sZz/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
+            background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
             background-color: #c44569;
         }
         
@@ -392,25 +403,72 @@
             text-align: center;
         }
         
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
+        .signal-info {
+            background: rgba(78, 205, 196, 0.25);
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transform: translateX(150%);
-            transition: transform 0.4s ease;
-            max-width: 300px;
-            font-size: 0.9rem;
-            border-left: 5px solid #ff6b6b;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
         }
         
-        .notification.show {
-            transform: translateX(0);
+        .apple-stem {
+            position: absolute;
+            top: -5px;
+            width: 3px;
+            height: 10px;
+            background: #8B4513;
+            border-radius: 2px;
+        }
+        
+        .apple-leaf {
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            width: 10px;
+            height: 6px;
+            background: #228B22;
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-45deg);
+        }
+        
+        /* Aviator o'yini uslublari */
+        .aviator-container {
+            text-align: center;
+        }
+        
+        .signal-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid #ff6b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            position: relative;
+            animation: circlePulse 2s infinite;
+        }
+        
+        @keyframes circlePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 107, 107, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 107, 107, 0.5); }
+        }
+        
+        .signal-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        .signal-label {
+            font-size: 1.2rem;
+            color: #a5b1c2;
+            margin-bottom: 10px;
         }
         
         .loading-screen {
@@ -472,132 +530,146 @@
             animation: dots 1.5s infinite;
         }
         
-        .telegram-modal {
+        .notification {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 15px;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .telegram-modal-content {
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
             background: rgba(255, 255, 255, 0.95);
             color: #333;
-            padding: 25px;
-            border-radius: 20px;
-            max-width: 380px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            animation: scaleIn 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+            max-width: 300px;
+            font-size: 0.9rem;
+            border-left: 5px solid #ff6b6b;
         }
         
-        @keyframes scaleIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        .notification.show {
+            transform: translateX(0);
         }
         
-        .telegram-modal h3 {
-            margin-bottom: 15px;
-            color: #0088cc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .telegram-modal p {
-            margin-bottom: 20px;
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-        
-        .contact-list {
-            max-height: 250px;
-            overflow-y: auto;
-            margin: 20px 0;
-            text-align: left;
-            border-radius: 10px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .contact-item {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: background 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            background: #f5f5f5;
-        }
-        
-        .contact-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #0088cc;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
-        .contact-name {
-            font-weight: 600;
-        }
-        
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
+        /* O'yinlar menyusi uslublari - YANGILANDI */
+        .games-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-top: 20px;
         }
         
-        .modal-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .game-card:hover::before {
+            left: 100%;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 70%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 30%;
+        }
+        
+        .game-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .game-description {
+            font-size: 0.7rem;
+            color: #a5b1c2;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .game-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+        
+        .status-available {
+            background: rgba(78, 205, 196, 0.3);
+            color: #4ecdc4;
+            border: 1px solid rgba(78, 205, 196, 0.5);
+        }
+        
+        .status-coming {
+            background: rgba(255, 107, 107, 0.3);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+        
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
             border-radius: 10px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
         }
         
-        .modal-btn-primary {
-            background: #0088cc;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
-        }
-        
-        .modal-btn-primary:hover {
-            background: #0077b3;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.6);
-        }
-        
-        .modal-btn-secondary {
-            background: #e0e0e0;
-            color: #333;
-        }
-        
-        .modal-btn-secondary:hover {
-            background: #d0d0d0;
-            transform: translateY(-2px);
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-3px);
         }
         
         .promo-badge {
@@ -612,110 +684,264 @@
             animation: pulse 2s infinite;
         }
         
-        .signal-info {
-            background: rgba(78, 205, 196, 0.25);
-            border: 1px solid rgba(78, 205, 196, 0.4);
-            padding: 15px;
-            border-radius: 12px;
+        .invite-command {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            padding: 12px;
+            border-radius: 10px;
             margin: 15px 0;
             font-size: 0.85rem;
+            color: #ffd8d8;
             text-align: center;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .apple-stem {
-            position: absolute;
-            top: -5px;
-            width: 3px;
-            height: 10px;
-            background: #8B4513;
-            border-radius: 2px;
-        }
-        
-        .apple-leaf {
-            position: absolute;
-            top: -8px;
-            left: 10px;
-            width: 10px;
-            height: 6px;
-            background: #228B22;
-            border-radius: 50% 0 50% 50%;
-            transform: rotate(-45deg);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-apple-alt"></i> Apple of Fortune <span class="promo-badge">AIFUT</span></h1>
-            <p>Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan DBbet foydalanuvchilari uchun</p>
-        </div>
-        
-        <!-- Kirish qismi -->
-        <div id="login-section" class="card">
-            <div class="form-group">
-                <label for="id-number"><i class="fas fa-id-card"></i> ID Raqam</label>
-                <div class="input-container">
-                    <input type="text" id="id-number" placeholder="AIFUT promokod orqali olingan ID" maxlength="20">
-                    <div class="error-message" id="id-error">ID raqam kiriting</div>
-                    <div class="success-message" id="id-success">ID raqam to'g'ri kiritildi</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="phone-number"><i class="fas fa-phone"></i> Telefon Raqam</label>
-                <div class="input-container">
-                    <input type="tel" id="phone-number" placeholder="DBbet ga ro'yxatdan o'tgan raqam" maxlength="15">
-                    <div class="error-message" id="phone-error">Telefon raqamni togri kiriting</div>
-                    <div class="success-message" id="phone-success">Telefon raqam to'g'ri kiritildi</div>
-                </div>
-            </div>
-            <button id="login-btn" class="btn" disabled>Ma'lumotlarni Tasdiqlash</button>
-        </div>
-        
-        <!-- Signal olish qismi -->
-        <div id="signal-section" class="card hidden">
-            <div class="signal-info">
-                <i class="fas fa-info-circle"></i> Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan DBbet foydalanuvchilari uchun aniq ishlaydi
-            </div>
-            <button id="signal-btn" class="btn">Signal Olish</button>
-        </div>
-        
-        <!-- O'yin qismi -->
-        <div id="game-section" class="card hidden">
-            <div class="game-info">
-                <div class="level-indicator">butun olmani tanlang va galaba qiling<span id="level">1851</span></div>
-            </div>
-            
-            <h2 style="text-align: center; margin-bottom: 15px; font-size: 1.3rem;">Apple of Fortune</h2>
-            
-            <div id="apples-container" class="apples-container">
-                <!-- Olmalar JavaScript orqali yaratiladi -->
-            </div>
-            
-            <button id="next-row-btn" class="btn">Keyingi Qator</button>
-        </div>
-        
-        <!-- Taklif qilish qismi -->
-        <div id="invite-section" class="card hidden">
-            <div class="message">
-                <h3><i class="fas fa-users"></i> signal olishni Davom Ettirish</h3>
-                <p>Signal olishni davom ettirish uchun 15 ta do'stingizga tarqating</p>
-            </div>
-            
-            <div class="progress-container">
-                <p>Taklif qilingan do'stlar: <span id="invited-count">0</span>/15</p>
-                <div class="progress-bar">
-                    <div id="progress" class="progress"></div>
+        <!-- Asosiy menyu -->
+        <div id="main-menu" class="card">
+            <div class="header">
+                <h1><i class="fas fa-gamepad"></i> Signal O'yinlari <span class="promo-badge">AIFUT</span></h1>
+                <p>Tanlang va g'alaba qozoning!</p>
+                <div class="promo-message">
+                    <i class="fas fa-info-circle"></i> AIFUT promokodi bilan DBbet dan ro'yxatdan o'ting va signallarni oling!
                 </div>
             </div>
             
-            <div class="invite-section">
-                <button id="share-btn" class="btn btn-telegram">
-                    <i class="fab fa-telegram"></i> Do'stlarga Tarqatish
-                </button>
+            <div class="games-menu">
+                <div class="game-card" data-game="apple">
+                    <div class="game-image">
+                        <img src="https://play-lh.googleusercontent.com/ezAY-TvV3PlhYWLs8k8czRjWWSdBwFtPrw72fNpS8p6wByC0xBG-Dgt0K5ojieZXrg" alt="Apple of Fortune">
+                    </div>
+                    <div class="game-content">
+                        <div class="game-title">Apple of Fortune</div>
+                        <div class="game-description">Olmalarni tanlang va signal oling</div>
+                        <div class="game-status status-available">Mavjud</div>
+                    </div>
+                </div>
                 
-                <button id="continue-btn" class="btn hidden" style="margin-top: 15px;">Davom Etish</button>
+                <div class="game-card" data-game="aviator">
+                    <div class="game-image">
+                        <img src="https://baccara.games/wp-content/themes/yootheme/cache/2-353-d140618c.png" alt="Aviator">
+                    </div>
+                    <div class="game-content">
+                        <div class="game-title">Aviator</div>
+                        <div class="game-description">Samolyot balandligini bashorat qiling</div>
+                        <div class="game-status status-available">Mavjud</div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-game="jetx">
+                    <div class="game-image">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.Wv8xCAIVuHFA0-I1ZEXh-gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="JetX">
+                    </div>
+                    <div class="game-content">
+                        <div class="game-title">JetX</div>
+                        <div class="game-description">Raketa parvoni kuzatish</div>
+                        <div class="game-status status-coming">Tez orada</div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-game="penalty">
+                    <div class="game-image">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.QnWi3oyPskf76YNxA6N3wAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Penaltiy">
+                    </div>
+                    <div class="game-content">
+                        <div class="game-title">Penaltiy</div>
+                        <div class="game-description">Penaltilar seriyasi</div>
+                        <div class="game-status status-coming">Tez orada</div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Apple of Fortune o'yini -->
+        <div id="apple-game" class="hidden">
+            <div class="back-btn" id="back-to-menu-apple">
+                <i class="fas fa-arrow-left"></i>
+                O'yinlar menyusiga qaytish
+            </div>
+            
+            <div class="header">
+                <h1><i class="fas fa-apple-alt"></i> Apple of Fortune <span class="promo-badge">AIFUT</span></h1>
+                <p>Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan DBbet foydalanuvchilari uchun togri ishlaydi feyk akkauntlar uchun xato signal beradi</p>
+                <div class="promo-message">
+                    <i class="fas fa-info-circle"></i> AIFUT promokodi bilan DBbet dan ro'yxatdan o'ting va signallarni oling!
+                </div>
+            </div>
+            
+            <!-- Kirish qismi -->
+            <div id="apple-login-section" class="card">
+                <div class="form-group">
+                    <label for="apple-id-number"><i class="fas fa-id-card"></i> ID Raqam</label>
+                    <div class="input-container">
+                        <input type="text" id="apple-id-number" placeholder="AIFUT promokod orqali olingan ID" maxlength="20">
+                        <div class="error-message" id="apple-id-error">ID raqam togri  bo'lishi kerak</div>
+                        <div class="success-message" id="apple-id-success">ID raqam to'g'ri kiritildi</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apple-phone-number"><i class="fas fa-phone"></i> Telefon Raqam</label>
+                    <div class="input-container">
+                        <input type="tel" id="apple-phone-number" placeholder="DBbet ga ro'yxatdan o'tgan raqam" maxlength="15">
+                        <div class="error-message" id="apple-phone-error">Telefon raqam DBbet akkauntga ulangan bolishi shart</div>
+                        <div class="success-message" id="apple-phone-success">Telefon raqam to'g'ri kiritildi</div>
+                    </div>
+                </div>
+                <button id="apple-login-btn" class="btn" disabled>Signal olishni boshlash</button>
+            </div>
+            
+            <!-- Signal olish qismi -->
+            <div id="apple-signal-section" class="card hidden">
+                <div class="signal-info">
+                    <i class="fas fa-info-circle"></i> Signallar faqat AIFUT promokod orqali ro'yxatdan o'tgan DBbet foydalanuvchilari uchun aniq ishlaydi
+                </div>
+                <button id="apple-signal-btn" class="btn">Signal Olish</button>
+            </div>
+            
+            <!-- O'yin qismi -->
+            <div id="apple-game-section" class="card hidden">
+                <div class="game-info">
+                    <div class="level-indicator">korsatilgan butun olmani tanlang: <span id="apple-level"></span></div>
+                </div>
+                
+                <h2 style="text-align: center; margin-bottom: 15px; font-size: 1.3rem;">Apple of Fortune</h2>
+                
+                <div id="apples-container" class="apples-container">
+                    <!-- Olmalar JavaScript orqali yaratiladi -->
+                </div>
+                
+                <button id="apple-next-row-btn" class="btn">Keyingi Qator</button>
+            </div>
+            
+            <!-- Taklif qilish qismi -->
+            <div id="apple-invite-section" class="card hidden">
+                <div class="message">
+                    <h3><i class="fas fa-users"></i> Signal olishni Davom Ettirish</h3>
+                    <p>O'yinni davom ettirish uchun 15 ta do'stingizga tarqating</p>
+                </div>
+                
+                <div class="invite-command">
+                    <i class="fas fa-exclamation-circle"></i> Toliq foydalanish va signallarni ko'proq olish uchun 15 ta do'st taklif qiling!
+                </div>
+                
+                <div class="progress-container">
+                    <p>Taklif qilingan do'stlar: <span id="apple-invited-count">0</span>/15</p>
+                    <div class="progress-bar">
+                        <div id="apple-progress" class="progress"></div>
+                    </div>
+                </div>
+                
+                <div class="invite-section">
+                    <button id="apple-share-btn" class="btn btn-telegram">
+                        <i class="fab fa-telegram"></i> Do'stlarga Tarqatish
+                    </button>
+                    
+                    <button id="apple-continue-btn" class="btn hidden" style="margin-top: 15px;">Davom Etish</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aviator o'yini -->
+        <div id="aviator-game" class="hidden">
+            <div class="back-btn" id="back-to-menu-aviator">
+                <i class="fas fa-arrow-left"></i>
+                O'yinlar menyusiga qaytish
+            </div>
+            
+            <div class="header">
+                <h1><i class="fas fa-plane"></i> Aviator <span class="promo-badge">AIFUT</span></h1>
+                <p>Signal aniq ishlashi uchun AIFUT promokod DBbet platformasidan ro'yxatdan o'tgan ID raqam bilan o'ynang</p>
+                <div class="promo-message">
+                    <i class="fas fa-info-circle"></i> AIFUT promokodi bilan DBbet dan ro'yxatdan o'ting va signallarni oling!
+                </div>
+            </div>
+            
+            <!-- Kirish qismi -->
+            <div id="aviator-login-section" class="card">
+                <div class="form-group">
+                    <label for="aviator-id-number"><i class="fas fa-id-card"></i> ID Raqam</label>
+                    <div class="input-container">
+                        <input type="text" id="aviator-id-number" placeholder="AIFUT promokod orqali olingan ID" maxlength="20">
+                        <div class="error-message" id="aviator-id-error">ID raqam togri kiriting</div>
+                        <div class="success-message" id="aviator-id-success">ID raqam to'g'ri kiritildi</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="aviator-phone-number"><i class="fas fa-phone"></i> Telefon Raqam</label>
+                    <div class="input-container">
+                        <input type="tel" id="aviator-phone-number" placeholder="DBbet ga ro'yxatdan o'tgan raqam" maxlength="15">
+                        <div class="error-message" id="aviator-phone-error">Telefon raqam DBbetga ulangan bo'lishi kerak</div>
+                        <div class="success-message" id="aviator-phone-success">Telefon raqam to'g'ri kiritildi</div>
+                    </div>
+                </div>
+                <button id="aviator-login-btn" class="btn" disabled>Boshlash</button>
+            </div>
+            
+            <!-- Signal olish qismi -->
+            <div id="aviator-signal-section" class="card hidden">
+                <div class="signal-info">
+                    <i class="fas fa-info-circle"></i> Keyingi kutilayotgan minimal uchish balandligi
+                </div>
+                
+                <div class="aviator-container">
+                    <div class="signal-label">Korsatilgan KFga yetmasdan yutuqni olish tavsiya qilinadi</div>
+                    <div class="signal-circle">
+                        <div class="signal-number" id="aviator-signal-number">AVIATOR</div>
+                    </div>
+                </div>
+                
+                <button id="aviator-signal-btn" class="btn">Signal Olish</button>
+            </div>
+            
+            <!-- Taklif qilish qismi -->
+            <div id="aviator-invite-section" class="card hidden">
+                <div class="message">
+                    <h3><i class="fas fa-users"></i> Signal olishni davom ettirish uchun</h3>
+                    <p>15 ta do'stingizga tarqating va toliq signallarni oling</p>
+                </div>
+                
+                <div class="invite-command">
+                    <i class="fas fa-exclamation-circle"></i>toliq foydalanish va signallarni ko'proq olish uchun 15 ta do'st taklif qiling!
+                </div>
+                
+                <div class="progress-container">
+                    <p>Taklif qilingan do'stlar: <span id="aviator-invited-count">0</span>/15</p>
+                    <div class="progress-bar">
+                        <div id="aviator-progress" class="progress"></div>
+                    </div>
+                </div>
+                
+                <div class="invite-section">
+                    <button id="aviator-share-btn" class="btn btn-telegram">
+                        <i class="fab fa-telegram"></i> Do'stlarga Tarqatish
+                    </button>
+                    
+                    <button id="aviator-continue-btn" class="btn hidden" style="margin-top: 15px;">Davom Etish</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boshqa o'yinlar uchun joy -->
+        <div id="other-games" class="card hidden">
+            <div class="back-btn" id="back-to-menu-other">
+                <i class="fas fa-arrow-left"></i>
+                O'yinlar menyusiga qaytish
+            </div>
+            
+            <div class="header">
+                <h1><i class="fas fa-tools"></i> Tez Orada Boshlanadi</h1>
+                <p>Ushbu o'yin tez orada ishga tushadi</p>
+            </div>
+            
+            <div class="message">
+                <h3><i class="fas fa-clock"></i> Ishlab Chiqilmoqda</h3>
+                <p>Biz jamoamiz ushbu o'yinni tez orada ishga tushirish ustida ishlamoqda. Kuting!</p>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="showMainMenu()">
+                <i class="fas fa-arrow-left"></i> O'yinlar Menyusiga Qaytish
+            </button>
         </div>
     </div>
 
@@ -725,220 +951,300 @@
             <div class="loading-spinner">
                 <i class="fas fa-search"></i>
             </div>
-            <div class="loading-text">kegingi qator korsatilmoqda</div>
+            <div class="loading-text">Signal qidirilmoqda</div>
             <div class="loading-subtext"></div>
-        </div>
-    </div>
-
-    <!-- Telegram modal oynasi -->
-    <div id="telegram-modal" class="telegram-modal hidden">
-        <div class="telegram-modal-content">
-            <h3><i class="fab fa-telegram"></i> Telegram orqali tarqatish</h3>
-            <p>Quyidagi kontaktlaringizga taklif xabarini yuboring:</p>
-            
-            <div class="contact-list" id="contact-list">
-                <!-- Kontaktlar JavaScript orqali yaratiladi -->
-            </div>
-            
-            <div class="modal-buttons">
-                <button id="send-all-btn" class="modal-btn modal-btn-primary">Barchasiga Yuborish</button>
-                <button id="cancel-telegram-btn" class="modal-btn modal-btn-secondary">Bekor Qilish</button>
-            </div>
         </div>
     </div>
 
     <div id="notification" class="notification"></div>
 
     <script>
-        // DOM elementlari
-        const loginSection = document.getElementById('login-section');
-        const signalSection = document.getElementById('signal-section');
-        const gameSection = document.getElementById('game-section');
-        const inviteSection = document.getElementById('invite-section');
-        const loadingScreen = document.getElementById('loading-screen');
-        const telegramModal = document.getElementById('telegram-modal');
-        const contactList = document.getElementById('contact-list');
+        // DOM elementlari - Apple o'yini
+        const mainMenu = document.getElementById('main-menu');
+        const appleGame = document.getElementById('apple-game');
+        const aviatorGame = document.getElementById('aviator-game');
+        const otherGames = document.getElementById('other-games');
         
-        const loginBtn = document.getElementById('login-btn');
-        const signalBtn = document.getElementById('signal-btn');
-        const nextRowBtn = document.getElementById('next-row-btn');
-        const continueBtn = document.getElementById('continue-btn');
-        const shareBtn = document.getElementById('share-btn');
-        const sendAllBtn = document.getElementById('send-all-btn');
-        const cancelTelegramBtn = document.getElementById('cancel-telegram-btn');
+        // Apple o'yini elementlari
+        const appleLoginSection = document.getElementById('apple-login-section');
+        const appleSignalSection = document.getElementById('apple-signal-section');
+        const appleGameSection = document.getElementById('apple-game-section');
+        const appleInviteSection = document.getElementById('apple-invite-section');
         
-        const idInput = document.getElementById('id-number');
-        const phoneInput = document.getElementById('phone-number');
-        const idError = document.getElementById('id-error');
-        const idSuccess = document.getElementById('id-success');
-        const phoneError = document.getElementById('phone-error');
-        const phoneSuccess = document.getElementById('phone-success');
+        const appleLoginBtn = document.getElementById('apple-login-btn');
+        const appleSignalBtn = document.getElementById('apple-signal-btn');
+        const appleNextRowBtn = document.getElementById('apple-next-row-btn');
+        const appleContinueBtn = document.getElementById('apple-continue-btn');
+        const appleShareBtn = document.getElementById('apple-share-btn');
+        const backToMenuApple = document.getElementById('back-to-menu-apple');
+        
+        const appleIdInput = document.getElementById('apple-id-number');
+        const applePhoneInput = document.getElementById('apple-phone-number');
+        const appleIdError = document.getElementById('apple-id-error');
+        const appleIdSuccess = document.getElementById('apple-id-success');
+        const applePhoneError = document.getElementById('apple-phone-error');
+        const applePhoneSuccess = document.getElementById('apple-phone-success');
         
         const applesContainer = document.getElementById('apples-container');
-        const invitedCount = document.getElementById('invited-count');
-        const progress = document.getElementById('progress');
+        const appleInvitedCount = document.getElementById('apple-invited-count');
+        const appleProgress = document.getElementById('apple-progress');
+        const appleLevelElement = document.getElementById('apple-level');
+        
+        // Aviator o'yini elementlari
+        const aviatorLoginSection = document.getElementById('aviator-login-section');
+        const aviatorSignalSection = document.getElementById('aviator-signal-section');
+        const aviatorInviteSection = document.getElementById('aviator-invite-section');
+        
+        const aviatorLoginBtn = document.getElementById('aviator-login-btn');
+        const aviatorSignalBtn = document.getElementById('aviator-signal-btn');
+        const aviatorShareBtn = document.getElementById('aviator-share-btn');
+        const aviatorContinueBtn = document.getElementById('aviator-continue-btn');
+        const backToMenuAviator = document.getElementById('back-to-menu-aviator');
+        const backToMenuOther = document.getElementById('back-to-menu-other');
+        
+        const aviatorIdInput = document.getElementById('aviator-id-number');
+        const aviatorPhoneInput = document.getElementById('aviator-phone-number');
+        const aviatorIdError = document.getElementById('aviator-id-error');
+        const aviatorIdSuccess = document.getElementById('aviator-id-success');
+        const aviatorPhoneError = document.getElementById('aviator-phone-error');
+        const aviatorPhoneSuccess = document.getElementById('aviator-phone-success');
+        const aviatorSignalNumber = document.getElementById('aviator-signal-number');
+        const aviatorInvitedCount = document.getElementById('aviator-invited-count');
+        const aviatorProgress = document.getElementById('aviator-progress');
+        
+        const loadingScreen = document.getElementById('loading-screen');
         const notification = document.getElementById('notification');
-        const levelElement = document.getElementById('level');
         
-        // O'yin holatlari
-        let currentRow = 1;
-        let invitedFriends = 0;
-        let gameLevel = 1;
-        let isIdValid = false;
-        let isPhoneValid = false;
+        // Apple o'yini holatlari
+        let appleCurrentRow = 1;
+        let appleInvitedFriends = 0;
+        let appleGameLevel = 1;
+        let isAppleIdValid = false;
+        let isApplePhoneValid = false;
+
+        // Aviator o'yini holatlari
+        let isAviatorIdValid = false;
+        let isAviatorPhoneValid = false;
+        let aviatorInvitedFriends = 0;
+
+        // O'yinlar menyusi
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const game = this.getAttribute('data-game');
+                
+                if (game === 'apple') {
+                    showAppleGame();
+                } else if (game === 'aviator') {
+                    showAviatorGame();
+                } else {
+                    showOtherGames();
+                }
+            });
+        });
         
-        // ID raqam validatsiyasi
-        idInput.addEventListener('input', function() {
-            const idValue = this.value.replace(/\D/g, ''); // Faqat raqamlarni qoldiradi
+        // Asosiy menyuga qaytish
+        backToMenuApple.addEventListener('click', showMainMenu);
+        backToMenuAviator.addEventListener('click', showMainMenu);
+        backToMenuOther.addEventListener('click', showMainMenu);
+        
+        function showMainMenu() {
+            appleGame.classList.add('hidden');
+            aviatorGame.classList.add('hidden');
+            otherGames.classList.add('hidden');
+            mainMenu.classList.remove('hidden');
+        }
+        
+        function showAppleGame() {
+            mainMenu.classList.add('hidden');
+            aviatorGame.classList.add('hidden');
+            otherGames.classList.add('hidden');
+            appleGame.classList.remove('hidden');
+            resetAppleGame();
+        }
+        
+        function showAviatorGame() {
+            mainMenu.classList.add('hidden');
+            appleGame.classList.add('hidden');
+            otherGames.classList.add('hidden');
+            aviatorGame.classList.remove('hidden');
+            resetAviatorGame();
+        }
+        
+        function showOtherGames() {
+            mainMenu.classList.add('hidden');
+            appleGame.classList.add('hidden');
+            aviatorGame.classList.add('hidden');
+            otherGames.classList.remove('hidden');
+        }
+        
+        // ========== APPLE O'YINI FUNKSIYALARI ==========
+        
+        function resetAppleGame() {
+            appleLoginSection.classList.remove('hidden');
+            appleSignalSection.classList.add('hidden');
+            appleGameSection.classList.add('hidden');
+            appleInviteSection.classList.add('hidden');
+            
+            appleCurrentRow = 1;
+            appleGameLevel = 1;
+            appleInvitedFriends = 0;
+            appleLevelElement.textContent = appleGameLevel;
+            updateAppleInviteProgress();
+            
+            // Inputlarni tozalash
+            appleIdInput.value = '';
+            applePhoneInput.value = '';
+            appleIdInput.classList.remove('input-error', 'input-success');
+            applePhoneInput.classList.remove('input-error', 'input-success');
+            appleIdError.style.display = 'none';
+            appleIdSuccess.style.display = 'none';
+            applePhoneError.style.display = 'none';
+            applePhoneSuccess.style.display = 'none';
+            appleLoginBtn.disabled = true;
+        }
+        
+        // Apple ID raqam validatsiyasi
+        appleIdInput.addEventListener('input', function() {
+            const idValue = this.value.replace(/\D/g, '');
             this.value = idValue;
             
             if (idValue.length < 8) {
                 this.classList.add('input-error');
                 this.classList.remove('input-success');
-                idError.style.display = 'block';
-                idSuccess.style.display = 'none';
-                isIdValid = false;
+                appleIdError.style.display = 'block';
+                appleIdSuccess.style.display = 'none';
+                isAppleIdValid = false;
             } else {
                 this.classList.remove('input-error');
                 this.classList.add('input-success');
-                idError.style.display = 'none';
-                idSuccess.style.display = 'block';
-                isIdValid = true;
+                appleIdError.style.display = 'none';
+                appleIdSuccess.style.display = 'block';
+                isAppleIdValid = true;
             }
-            updateLoginButton();
+            updateAppleLoginButton();
         });
         
-        // Telefon raqam validatsiyasi
-        phoneInput.addEventListener('input', function() {
-            const phoneValue = this.value.replace(/\D/g, ''); // Faqat raqamlarni qoldiradi
+        // Apple telefon raqam validatsiyasi
+        applePhoneInput.addEventListener('input', function() {
+            const phoneValue = this.value.replace(/\D/g, '');
             this.value = phoneValue;
             
             if (phoneValue.length < 9) {
                 this.classList.add('input-error');
                 this.classList.remove('input-success');
-                phoneError.style.display = 'block';
-                phoneSuccess.style.display = 'none';
-                isPhoneValid = false;
+                applePhoneError.style.display = 'block';
+                applePhoneSuccess.style.display = 'none';
+                isApplePhoneValid = false;
             } else {
                 this.classList.remove('input-error');
                 this.classList.add('input-success');
-                phoneError.style.display = 'none';
-                phoneSuccess.style.display = 'block';
-                isPhoneValid = true;
+                applePhoneError.style.display = 'none';
+                applePhoneSuccess.style.display = 'block';
+                isApplePhoneValid = true;
             }
-            updateLoginButton();
+            updateAppleLoginButton();
         });
         
-        // Login tugmasini yangilash
-        function updateLoginButton() {
-            if (isIdValid && isPhoneValid) {
-                loginBtn.disabled = false;
+        // Apple login tugmasini yangilash
+        function updateAppleLoginButton() {
+            if (isAppleIdValid && isApplePhoneValid) {
+                appleLoginBtn.disabled = false;
             } else {
-                loginBtn.disabled = true;
+                appleLoginBtn.disabled = true;
             }
         }
         
-        // Tasdiqlash tugmasi bosilganda
-        loginBtn.addEventListener('click', function() {
-            if (isIdValid && isPhoneValid) {
+        // Apple tasdiqlash tugmasi
+        appleLoginBtn.addEventListener('click', function() {
+            if (isAppleIdValid && isApplePhoneValid) {
                 showNotification("Ma'lumotlar tasdiqlandi! Endi signal olish tugmasini bosing.");
                 setTimeout(() => {
-                    loginSection.classList.add('hidden');
-                    signalSection.classList.remove('hidden');
+                    appleLoginSection.classList.add('hidden');
+                    appleSignalSection.classList.remove('hidden');
                 }, 1000);
             } else {
                 showNotification("Iltimos, ID va telefon raqamingizni to'g'ri kiriting!", true);
             }
         });
         
-        // Signal olish tugmasi bosilganda
-        signalBtn.addEventListener('click', function() {
+        // Apple signal olish tugmasi
+        appleSignalBtn.addEventListener('click', function() {
             showNotification("Signal olish boshlandi! Apple of Fortune o'yiniga kirishingiz mumkin.");
             setTimeout(() => {
-                signalSection.classList.add('hidden');
-                gameSection.classList.remove('hidden');
-                startGame();
+                appleSignalSection.classList.add('hidden');
+                appleGameSection.classList.remove('hidden');
+                startAppleGame();
             }, 1500);
         });
         
-        // Keyingi qator tugmasi bosilganda
-        nextRowBtn.addEventListener('click', function() {
-            // Yuklanish ekranini ko'rsatish
+        // Apple keyingi qator tugmasi
+        appleNextRowBtn.addEventListener('click', function() {
             showLoadingScreen();
             
             // 4 soniyalik kutish
             setTimeout(() => {
-                // Yuklanish ekranini yashirish
                 loadingScreen.classList.add('hidden');
                 
                 // Keyingi qatorga o'tish
-                currentRow++;
+                appleCurrentRow++;
                 
-                if (currentRow === 2) {
+                if (appleCurrentRow === 2) {
                     generateApples(5, 2); // 5 ta olma, 2 tasi tishlangan
-                } else if (currentRow === 3) {
+                } else if (appleCurrentRow === 3) {
                     generateApples(5, 3); // 5 ta olma, 3 tasi tishlangan
-                } else if (currentRow === 4) {
+                } else if (appleCurrentRow === 4) {
                     generateApples(5, 3); // 5 ta olma, 3 tasi tishlangan
-                    nextRowBtn.textContent = "Signal olishni davom etish";
-                } else if (currentRow > 4) {
+                    appleNextRowBtn.textContent = "O'yinni Yakunlash";
+                } else if (appleCurrentRow > 4) {
                     // O'yin tugadi, taklif qilish kerak
                     showNotification("O'yin tugadi! Davom etish uchun do'stlaringizga tarqating.");
                     setTimeout(() => {
-                        gameSection.classList.add('hidden');
-                        inviteSection.classList.remove('hidden');
-                        updateInviteProgress();
+                        appleGameSection.classList.add('hidden');
+                        appleInviteSection.classList.remove('hidden');
+                        updateAppleInviteProgress();
                     }, 1000);
                 }
             }, 4000);
         });
         
-        // Do'stlarga tarqatish tugmasi
-        shareBtn.addEventListener('click', function() {
-            showTelegramModal();
+        // Apple do'stlarga tarqatish tugmasi
+        appleShareBtn.addEventListener('click', function() {
+            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Apple of Fortune ga aniq signal beradi`;
+            
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/aifutbot')}&text=${encodeURIComponent(inviteMessage)}`;
+            
+            window.open(telegramUrl, '_blank', 'width=600,height=400');
+            
+            showNotification("Xabar do'stlaringizga yuborildi!");
+            appleInvitedFriends += 3;
+            updateAppleInviteProgress();
         });
         
-        // Davom etish tugmasi bosilganda
-        continueBtn.addEventListener('click', function() {
-            inviteSection.classList.add('hidden');
-            gameSection.classList.remove('hidden');
+        // Apple davom etish tugmasi
+        appleContinueBtn.addEventListener('click', function() {
+            appleInviteSection.classList.add('hidden');
+            appleGameSection.classList.remove('hidden');
             
             // Yangi o'yin bosqichi
-            gameLevel++;
-            levelElement.textContent = gameLevel;
-            currentRow = 1;
-            nextRowBtn.textContent = "Keyingi Qator";
+            appleGameLevel++;
+            appleLevelElement.textContent = appleGameLevel;
+            appleCurrentRow = 1;
+            appleNextRowBtn.textContent = "Keyingi Qator";
             
-            if (gameLevel === 2) {
+            if (appleGameLevel === 2) {
                 generateApples(5, 1); // 5 ta olma, 1 tasi tishlangan
-            } else if (gameLevel > 2) {
-                // Ko'proq qatorlar
+            } else if (appleGameLevel > 2) {
                 generateApples(5, 2); // 5 ta olma, 2 tasi tishlangan
             }
             
             showNotification("Yangi bosqich boshlandi! Omad!");
         });
         
-        // Barcha kontaktlarga yuborish tugmasi
-        sendAllBtn.addEventListener('click', function() {
-            sendTelegramInvites();
-        });
-        
-        // Telegram modalini yopish
-        cancelTelegramBtn.addEventListener('click', function() {
-            telegramModal.classList.add('hidden');
-        });
-        
-        // Yuklanish ekranini ko'rsatish
-        function showLoadingScreen() {
-            loadingScreen.classList.remove('hidden');
-        }
-        
-        // Signal olishni boshlash
-        function startGame() {
-            gameLevel = 1;
-            currentRow = 1;
-            levelElement.textContent = gameLevel;
+        // Apple o'yinni boshlash
+        function startAppleGame() {
+            appleGameLevel = 1;
+            appleCurrentRow = 1;
+            appleLevelElement.textContent = appleGameLevel;
             generateApples(5, 1); // 5 ta olma, 1 tasi tishlangan
         }
         
@@ -978,76 +1284,200 @@
             }
         }
         
-        // Taklif progressini yangilash
-        function updateInviteProgress() {
-            invitedCount.textContent = invitedFriends;
-            progress.style.width = `${(invitedFriends / 15) * 100}%`;
+        // Apple taklif progressini yangilash
+        function updateAppleInviteProgress() {
+            appleInvitedCount.textContent = appleInvitedFriends;
+            appleProgress.style.width = `${(appleInvitedFriends / 15) * 100}%`;
             
-            if (invitedFriends >= 15) {
-                continueBtn.classList.remove('hidden');
+            if (appleInvitedFriends >= 15) {
+                appleContinueBtn.classList.remove('hidden');
             } else {
-                continueBtn.classList.add('hidden');
+                appleContinueBtn.classList.add('hidden');
             }
         }
         
-        // Telegram modalini ko'rsatish
-        function showTelegramModal() {
-            // Kontaktlarni yaratish (simulyatsiya)
-            contactList.innerHTML = '';
-            const contacts = [
-                { name: "Ali Valiyev", id: "user1" },
-                { name: "Sardor Qodirov", id: "user2" },
-                { name: "Dilshod Rahimov", id: "user3" },
-                { name: "Otabek Karimov", id: "user4" },
-                { name: "Javohir Sobirov", id: "user5" },
-                { name: "Shaxzod Ismoilov", id: "user6" }
-            ];
+        // ========== AVIATOR O'YINI FUNKSIYALARI ==========
+        
+        function resetAviatorGame() {
+            aviatorLoginSection.classList.remove('hidden');
+            aviatorSignalSection.classList.add('hidden');
+            aviatorInviteSection.classList.add('hidden');
             
-            contacts.forEach(contact => {
-                const contactItem = document.createElement('div');
-                contactItem.className = 'contact-item';
-                contactItem.innerHTML = `
-                    <div class="contact-avatar">${contact.name.charAt(0)}</div>
-                    <div class="contact-name">${contact.name}</div>
-                `;
-                contactItem.addEventListener('click', function() {
-                    sendTelegramInvite(contact);
-                });
-                contactList.appendChild(contactItem);
-            });
+            aviatorIdInput.value = '';
+            aviatorPhoneInput.value = '';
+            aviatorIdInput.classList.remove('input-error', 'input-success');
+            aviatorPhoneInput.classList.remove('input-error', 'input-success');
+            aviatorIdError.style.display = 'none';
+            aviatorIdSuccess.style.display = 'none';
+            aviatorPhoneError.style.display = 'none';
+            aviatorPhoneSuccess.style.display = 'none';
+            aviatorLoginBtn.disabled = true;
             
-            telegramModal.classList.remove('hidden');
+            aviatorSignalNumber.textContent = 'AVIATOR';
+            aviatorInvitedFriends = 0;
+            updateAviatorInviteProgress();
         }
         
-        // Telegram orqali bitta kontaktga taklif yuborish
-        function sendTelegramInvite(contact) {
-            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Apple of Fortune ga aniq signal beradi`;
+        // Aviator ID raqam validatsiyasi
+        aviatorIdInput.addEventListener('input', function() {
+            const idValue = this.value.replace(/\D/g, '');
+            this.value = idValue;
             
-            // Telegram URL yaratish
-            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/aifutbot')}&text=${encodeURIComponent(inviteMessage)}`;
+            if (idValue.length < 8) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+                aviatorIdError.style.display = 'block';
+                aviatorIdSuccess.style.display = 'none';
+                isAviatorIdValid = false;
+            } else {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+                aviatorIdError.style.display = 'none';
+                aviatorIdSuccess.style.display = 'block';
+                isAviatorIdValid = true;
+            }
+            updateAviatorLoginButton();
+        });
+        
+        // Aviator telefon raqam validatsiyasi
+        aviatorPhoneInput.addEventListener('input', function() {
+            const phoneValue = this.value.replace(/\D/g, '');
+            this.value = phoneValue;
             
-            // Yangi oyna ochish
-            window.open(telegramUrl, '_blank', 'width=600,height=400');
-            
-            showNotification(`Xabar ${contact.name} ga yuborildi!`);
-            invitedFriends++;
-            updateInviteProgress();
+            if (phoneValue.length < 9) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+                aviatorPhoneError.style.display = 'block';
+                aviatorPhoneSuccess.style.display = 'none';
+                isAviatorPhoneValid = false;
+            } else {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+                aviatorPhoneError.style.display = 'none';
+                aviatorPhoneSuccess.style.display = 'block';
+                isAviatorPhoneValid = true;
+            }
+            updateAviatorLoginButton();
+        });
+        
+        // Aviator login tugmasini yangilash
+        function updateAviatorLoginButton() {
+            if (isAviatorIdValid && isAviatorPhoneValid) {
+                aviatorLoginBtn.disabled = false;
+            } else {
+                aviatorLoginBtn.disabled = true;
+            }
         }
         
-        // Telegram orqali barcha kontaktlarga taklif yuborish
-        function sendTelegramInvites() {
-            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Apple of Fortune ga aniq signal beradi`;
+        // Aviator boshlash tugmasi
+        aviatorLoginBtn.addEventListener('click', function() {
+            if (isAviatorIdValid && isAviatorPhoneValid) {
+                showNotification("Ma'lumotlar tasdiqlandi! Signal olish tugmasini bosing.");
+                setTimeout(() => {
+                    aviatorLoginSection.classList.add('hidden');
+                    aviatorSignalSection.classList.remove('hidden');
+                }, 1000);
+            } else {
+                showNotification("Iltimos, ID va telefon raqamingizni to'g'ri kiriting!", true);
+            }
+        });
+        
+        // Aviator signal olish tugmasi
+        aviatorSignalBtn.addEventListener('click', function() {
+            showLoadingScreen();
             
-            // Telegram URL yaratish
+            // 10 soniyalik kutish
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                generateAviatorSignal();
+                
+                // Signal olingandan so'ng taklif qilish bo'limiga o'tish
+                setTimeout(() => {
+                    aviatorSignalSection.classList.add('hidden');
+                    aviatorInviteSection.classList.remove('hidden');
+                    updateAviatorInviteProgress();
+                }, 2000);
+            }, 10000);
+        });
+        
+        // Aviator do'stlarga tarqatish tugmasi
+        aviatorShareBtn.addEventListener('click', function() {
+            const inviteMessage = `Dostim 100% ishlaydigan signal beruvchi bot topdim. Pulni sen ham kopaytirib ol! Bot manzili: https://t.me/aifutbot - Aviator ga aniq signal beradi`;
+            
             const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/aifutbot')}&text=${encodeURIComponent(inviteMessage)}`;
             
-            // Yangi oyna ochish
             window.open(telegramUrl, '_blank', 'width=600,height=400');
             
-            showNotification("Xabar barcha kontaktlaringizga yuborildi!");
-            invitedFriends += 3; // Bir nechta kontaktga yuborilgani uchun
-            updateInviteProgress();
-            telegramModal.classList.add('hidden');
+            showNotification("Xabar do'stlaringizga yuborildi!");
+            aviatorInvitedFriends += 3;
+            updateAviatorInviteProgress();
+        });
+        
+        // Aviator davom etish tugmasi
+        aviatorContinueBtn.addEventListener('click', function() {
+            aviatorInviteSection.classList.add('hidden');
+            aviatorSignalSection.classList.remove('hidden');
+            
+            showNotification("Yangi signal olish boshlandi! Omad!");
+        });
+        
+        // Aviator taklif progressini yangilash
+        function updateAviatorInviteProgress() {
+            aviatorInvitedCount.textContent = aviatorInvitedFriends;
+            aviatorProgress.style.width = `${(aviatorInvitedFriends / 15) * 100}%`;
+            
+            if (aviatorInvitedFriends >= 15) {
+                aviatorContinueBtn.classList.remove('hidden');
+            } else {
+                aviatorContinueBtn.classList.add('hidden');
+            }
+        }
+        
+        // Aviator signal generatsiyasi
+        function generateAviatorSignal() {
+            let currentNumber = 1.00;
+            const targetNumber = getRandomAviatorNumber();
+            const steps = 90; // 3 soniya davomida 90 marta o'zgarish (3 * 30fps)
+            const stepTime = 3000 / steps; // 3 soniya / 90 qadam
+            
+            let stepCount = 0;
+            
+            const numberInterval = setInterval(() => {
+                if (stepCount < steps) {
+                    // 1.00 dan 20.00 gacha tez aylanish effekti
+                    currentNumber = 1.00 + (Math.random() * 19);
+                    aviatorSignalNumber.textContent = currentNumber.toFixed(2);
+                    stepCount++;
+                } else {
+                    clearInterval(numberInterval);
+                    // Yakuniy raqamni ko'rsatish
+                    aviatorSignalNumber.textContent = targetNumber.toFixed(2);
+                    showNotification(`Keyingi kutilayotgan minimal uchish balandligi: ${targetNumber.toFixed(2)}`);
+                }
+            }, stepTime);
+        }
+        
+        // Tasodifiy Aviator raqami generatsiyasi
+        function getRandomAviatorNumber() {
+            const rand = Math.random();
+            
+            // 70% ehtimollik bilan 2.01 - 5.00 oralig'ida
+            if (rand < 0.7) {
+                return 2.01 + (Math.random() * 2.99);
+            }
+            // 20% ehtimollik bilan 1.10 - 2.00 oralig'ida
+            else if (rand < 0.9) {
+                return 1.10 + (Math.random() * 0.90);
+            }
+            // 10% ehtimollik bilan 5.01 - 19.99 oralig'ida
+            else {
+                return 5.01 + (Math.random() * 14.98);
+            }
+        }
+        
+        // Yuklanish ekranini ko'rsatish
+        function showLoadingScreen() {
+            loadingScreen.classList.remove('hidden');
         }
         
         // Xabarlarni ko'rsatish funksiyasi
